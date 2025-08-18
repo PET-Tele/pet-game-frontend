@@ -25,12 +25,10 @@
   },
   "scripts": {
     "test": "test",
-    "dev": "tsx watch backend/http/server.ts",
-    "build": "npm run build:client && npm run build:backend",
-    "build:client": "npm --prefix client run build",
-    "build:backend": "npm --prefix backend run build"
+    "build": "npm run build:client",
+    "build:client": "npm --prefix client run build"
   },
-  "workspaces": ["client", "backend"],
+  "workspaces": ["client"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/morgixin/pet-gaming.git#main"
