@@ -12,7 +12,7 @@ on:
 jobs:
   deploy-client:
     name: Deploy Client to Vercel
-    if: github.repository == 'morgixin/pet-gaming'
+    if: github.repository == 'pet-tele/pet-gaming'
     
     runs-on: ubuntu-latest
 
@@ -47,25 +47,3 @@ jobs:
 
     - name: Deploy to Vercel
       run: vercel deploy --prod --token ${{ secrets.VERCEL_TOKEN }}
-
-  deploy-backend:
-    name: Deploy Backend to Render
-    if: github.repository == 'morgixin/pet-gaming'
-
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      
-    - name: Deploy to Render via Deploy Hook
-      run: |
-        echo "Triggering Render deployment via deploy hook..."
-        curl -sSf -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-        
-    - name: Health check
-      run: |
-        echo "Waiting for deployment to complete..."
-        # Give Render some time to process the deployment request
-        sleep 90
-        curl -sSf ${{ secrets.BACKEND_URL }}/health || exit 1
