@@ -1,0 +1,167 @@
+import {
+    Flex,
+    Box,
+    Center,
+    FormControl,
+    Input,
+    InputGroup,
+    InputRightElement,
+    FormLabel,
+    VStack,
+    HStack,
+    Text,
+    Checkbox,
+    Button,
+} from "@chakra-ui/react";
+  
+import React, { useEffect, useState } from 'react';
+import * as UserService from '../../middleware/UserService';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { toastAlert } from "../components/ui/toastAlert";
+
+function Login() {
+    const navigate = useNavigate();
+    const { setUserData } = useAuth();
+    //nome de usuário
+    const [username, setUsername] = useState('');
+    //isso é para a senha
+    const [senha, setSenha] = useState('');
+    const [showSenha, setShowSenha] = useState(false);
+    const handleClick = () => setShowSenha(!showSenha)
+
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
+    };
+
+    const handleSenhaChange = (e) => {
+        setSenha(e.target.value);
+    };
+
+    //isso é para manter conectado
+    const [mantenhaConectado, setMantenhaConectado] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setMantenhaConectado(!mantenhaConectado);
+    };
+
+    useEffect(() => {
+        async function fetchUserDataFromCookie () {
+            const userFromCookie = await UserService.fetchCookieData();
+            if (userFromCookie) // não está logado
+                navigate("/")
+        }
+
+        fetchUserDataFromCookie();
+    }, [navigate])
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+  
+        const user = {
+          nickname: username,
+          password: senha,
+          remember: mantenhaConectado
+        };
+  
+        const result = await UserService.getUserByCredentials(user);
+        if (result.ok) { // Check if login is successful
+            const userFromCookie = await UserService.fetchCookieData();
+            if (userFromCookie) {
+                setUserData(userFromCookie);
+            }
+            toastAlert("Login bem-sucedido", "Você está logado com sucesso!", "success");
+            navigate("/", {viewTransition: true});
+        } else {
+            console.error("Login failed");
+            toastAlert("Login falhou", "Verifique suas credenciais e tente novamente.", "error");
+        }
+      }
+
+    return (
+     
+        <Flex
+            align="center"
+            justify="center"
+            bg="#012034"
+            h="86.3vh"
+
+        >
+            <Center
+            w="900px"
+            h="420px"
+            maxW={840}
+            bg="white"
+            top={250}
+            position="absolute"
+            borderRadius={20}
+            p="6"
+            boxShadow="0 1px 2px #ccc"
+            >
+            <form onSubmit={onSubmit}>
+                <FormControl display="flex" flexDir="column" gap="4">
+                <Text fontSize='2xl' textAlign={"center"}>Bem-vindo(a)!</Text>
+                    <VStack spacing="4">
+                        <Box w="650px">
+                            <FormLabel htmlFor="user">Nome de usuário ou email</FormLabel>
+                            <Input id="user" variant='filled' value={username} onChange={handleUsernameChange}/>
+                        </Box>
+
+                        <FormControl id="senha" mb={4}>
+                        <FormLabel htmlFor="senha">Senha</FormLabel>
+                        <InputGroup size='md'>
+                            <Input id="senha" pr='4.5rem' variant='filled' type={showSenha ? 'text' : 'password'} value={senha} onChange={handleSenhaChange}/>
+                            <InputRightElement width='6rem'>
+                                <Button h='1.6rem' size='sm' bg={"blackAlpha.300"} onClick={handleClick}>
+                                    {showSenha ? 'Esconder' : 'Mostrar'}
+                                </Button>
+                            </InputRightElement>
+                        </InputGroup>
+                        </FormControl>
+                        
+                    </VStack>
+                    <Checkbox size='lg' isChecked={mantenhaConectado} onChange={handleCheckboxChange} mt={-6}>Mantenha-me conectado</Checkbox>
+                    
+                    <HStack justify="center">
+                    <Button
+                        w={240}
+                        p="6"
+                        type="submit"
+                        bg="#004AAD"
+                        color="white"
+                        fontWeight="bold"
+                        fontSize="xl"
+                        mt="2"
+                        _hover={{ bg: "#1E446D" }}
+                    >
+                        Entrar
+                    </Button>
+
+                    </HStack>
+                </FormControl>
+                <Center w="650px" flex={true} marginTop={"24px"} justifyContent={"center"}>
+                        <p>Não tem uma conta?</p>
+                        <Button
+                            // w={240}
+                            // p="6"
+                            // type="submit"
+                            // bg="#004AAD"
+                            bg="none"
+                            color="#004AAD"
+                            fontWeight="bold"
+                            fontSize="xl"
+                            _hover={{ bg: "none", color: "#E09F00"}}
+                            onClick={() => navigate("/cadastro")}
+                        >
+                            Cadastre-se
+                        </Button>
+                    </Center>
+            </form>
+            </Center>
+        </Flex>
+        // </Box>
+    )
+}
+
+
+export default Login;

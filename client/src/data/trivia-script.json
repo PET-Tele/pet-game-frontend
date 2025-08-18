@@ -1,0 +1,74 @@
+
+    [
+        {
+            "level": 1,
+            "question": "Quantas vezes por dia você deve escovar os dentes?",
+            "answers": ["Uma", "Duas", "Após cada refeição", "Nenhuma"],
+            "correct": "Após cada refeição",
+            "points": 10
+        },
+        {
+            "level": 1,
+            "question": "É importante usar o fio dental para ter uma boa saúde bucal.",
+            "answers": ["Verdadeiro", "Falso"],
+            "correct": "Verdadeiro",
+            "points": 10
+        },
+        {
+            "level": 1,
+            "question": "É importante escovar a língua?",
+            "answers": ["Sim", "Não"],
+            "correct": "Sim",
+            "points": 10
+        },
+        {
+            "level": 2,
+            "question": "Comer muitos doces como balas, pirulitos, salgadinhos e chicletes causa cárie?",
+            "answers": [
+                "Sim, a frequência e a quantidade estão diretamente relacionadas à causa da doença, uma dieta rica em carboidratos pode causar cárie.", 
+                "Não, esses alimentos não estão relacionados à cárie, mas sim às bactérias.", 
+                "Não, apenas alimentos doces causam cárie; salgadinhos não causam cárie."],
+            "correct": "Sim, a frequência e a quantidade estão diretamente relacionadas à causa da doença, uma dieta rica em carboidratos pode causar cárie.",   
+            "points": 15
+        },
+        {
+            "level": 2,
+            "question": "Beber muito refrigerante faz mal para os dentes.",
+            "answers": ["Verdadeiro", "Falso"],
+            "correct": "Verdadeiro" ,   
+            "points": 15  
+        },
+        {
+            "level": 2,
+            "question": "Beber bastante água é importante para os dentes?",
+            "answers": ["Sim", "Não"],
+            "correct": "Sim",   
+            "points": 15   
+        },
+        {
+            "level": 3,
+            "question": "O que é a cárie?",
+            "answers": [
+                "É uma doença que prejudica os dentes, causando buracos, podendo levar à perda do dente.", 
+                "É apenas uma manchinha no dente que, ao escovar, sai.",
+                "É um buraquinho no dente.",
+                "Não é uma doença."
+            ],
+            "correct": "É uma doença que prejudica os dentes, causando buracos, podendo levar à perda do dente.",   
+            "points": 20   
+        },
+        {
+            "level": 3,
+            "question": "Crianças devem ir ao dentista?",
+            "answers": ["Sim", "Não"],
+            "correct": "Sim" ,   
+            "points": 20 
+        },
+        {
+            "level": 3,
+            "question": "Como deve ser feita a escovação dos dentes?",
+            "answers": ["Quero descobrir!"],
+            "correct": "Quero descobrir!",   
+            "points": 20  
+        }
+    ]

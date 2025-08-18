@@ -1,0 +1,118 @@
+.body {
+    cursor: default;
+    /* background-size: 100%; */
+    background-color: #FFF9E2;
+    /* background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-blend-mode: screen; */
+}
+
+.brush-cursor {
+    cursor: url("../../images/escova-cursor.png"), crosshair;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.menu {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* gap:32px; */
+
+    /* height: 120px; */
+    width: 100%;
+    background-color: #FFF9E2;
+    color: #EF3349;
+
+    /* border-bottom: 5px solid #5438DC; */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.panel {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel-column {
+    display: flex;
+    flex-direction: column;
+    background-color: #FD8087;
+}
+
+.square {
+    /* margin: 10px; */
+    height: 8rem;
+    width: 8rem;
+    /* border: 1px solid #000; */
+    border-radius: 2%;
+    background-image: url("../../images/healthy.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.enemy {
+    background-image: url("../../images/calculus.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.menu-time,
+.menu-score,
+.menu-lives,
+.menu-level {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* gap: -12px; */
+    position: relative;
+}
+
+.menu-lives img,
+.menu-time img,
+.menu-score img,
+.menu-level img {
+    z-index: 1;
+}
+
+.menu-lives h2,
+.menu-time h2,
+.menu-score h2,
+.menu-level h2 {
+    background-color: #ef334941;
+    padding: 8px 12px 8px 32px;
+    position: absolute;
+    right: 1px;
+    z-index: 0;
+}
+
+#message {
+    color: #000;
+    padding-top: 10px;
+
+    text-align: center;
+
+    width: 550px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    user-drag: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+}

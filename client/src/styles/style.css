@@ -1,0 +1,207 @@
+.temp-rect {
+    border: 2px solid black;
+    border-radius: 15px;
+    height: 160px;
+    width: 160px;
+    background-color: #112d59;
+    position: relative;
+}
+
+.store-rect {
+    border: 2px solid black;
+    border-radius: 15px;
+    height: 120px;
+    width: 120px;
+    background-color: #112d59;
+    position: relative;
+    cursor: pointer;
+}
+
+.edit-btn {
+  border: 2px solid black;
+  border-radius: 15px;
+  width: fit-content;
+  padding: 0px 4px;
+  background-color: #112d59;
+  position: relative;
+  right: 0;
+  cursor: pointer;
+}
+
+.temp-rect img, .store-rect img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    /* border-radius: 15px; */
+}
+
+.temp-rect span, .store-rect span {
+    background-color: #ffde59;
+    position: absolute;
+}
+
+.store-item-name {
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 15px;
+  /* height: 32px; */
+  font-size: 20px;
+}
+
+.main-item-name {
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 15px;
+  /* height: 32px; */
+  font-size: 20px;
+}
+
+.temp-rect:hover {
+  cursor: pointer !important;
+}
+
+.store-price {
+    background-color: #ffde59;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px 5px;
+    left: auto;
+    bottom: auto;
+    width: fit-content !important;
+    height: fit-content;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 20px;
+    z-index: 10;
+}
+
+/* .container {
+  margin: 50px;
+  display: block;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+} */
+
+.pixel, .pixel2 {
+  font-size: 18px;
+  color: white;
+  height: auto;
+  margin: 10px;
+  font-family: 'Pixelify Sans', sans-serif;
+  
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  /* text-transform: uppercase; */
+  
+  cursor: pointer;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pixel:active, .pixel2:active {
+  top: 2px;
+}
+
+.pixel2 {
+  position: relative;
+  display: block;
+  margin: 10px;
+  font-family: 'Pixelify Sans';
+  text-align: center;
+  
+  font-size: 18px;
+  color: white;
+  padding: 10px 10px;
+  position: relative;
+  background: rgb(37, 37, 141);
+  z-index: 2;
+}
+
+.pixel2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  bottom: 10px;
+  left: -10px;
+  right: -10px;
+  background: rgb(37, 37, 141);
+  z-index: -1;
+}
+
+.pixel2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  text-align: center;
+  top: 4px;
+  bottom: 4px;
+  left: -6px;
+  right: -6px;
+  background: rgb(37, 37, 141);
+  z-index: -1;
+}
+
+.pixel2white {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+  font-family: 'Pixelify Sans';
+  /* text-transform: uppercase; */
+  
+  font-size: 18px;
+  color: white;
+  padding: 40px 20px;
+  position: relative;
+  background: lightblue;
+  width: 900px;
+  /* height:600px; */
+  z-index: 2;
+}
+
+.pixel2white::before {
+  content: "";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -10px;
+  right: -10px;
+  background: lightblue;
+  z-index: -1;
+}
+
+.pixel2white::after {
+  content: "";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: -6px;
+  right: -6px;
+  background: lightblue;
+  z-index: -1;
+}
