@@ -12,7 +12,7 @@ on:
 jobs:
   deploy-client:
     name: Deploy Client to Vercel
-    if: github.repository == 'pet-tele/pet-game'
+    if: github.repository == 'pet-tele/pet-game-frontend'
     
     runs-on: ubuntu-latest
 
