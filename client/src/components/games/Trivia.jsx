@@ -19,7 +19,6 @@ const Trivia = (props) => {
     const [videos, setVideos] = useState([]);
 
     function onAnswerClick(answer) {
-        // console.log('Answer clicked:', answer);
         if (answer === triviaData[currentQuestionIndex].correct) {
             setScore(score + triviaData[currentQuestionIndex].points);
             setNumberOfCorrectAnswers(numberOfCorrectAnswers+1);
@@ -68,7 +67,6 @@ const Trivia = (props) => {
     
 
     async function saveScore(score) {
-        // console.log(props.userData);
         if (score > 0 && props.userData && props.gameId) {
             const gameProgressData = {
                 userId: props.userData.id,  

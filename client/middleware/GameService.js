@@ -14,11 +14,8 @@ export const getAllGames = async () => {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
-
-        console.log(res.ok ? "Games retrieved successfully" : "Failed to retrieve games");
         return res.ok ? res.json() : [];
     } catch (error) {
-        console.log('Error: ', error);
         return [];
     }
 };
@@ -34,11 +31,8 @@ export const getGameById = async (gameId) => {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
-
-        console.log(res.ok ? "Game retrieved successfully" : "Failed to retrieve game");
         return res.ok ? res.json() : null;
     } catch (error) {
-        console.log('Error: ', error);
         return null;
     }
 };
@@ -55,11 +49,8 @@ export const createGame = async (gameData) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(gameData),
         });
-
-        console.log(res.ok ? "Game created successfully" : "Failed to create game");
         return res.ok ? res.json() : null;
     } catch (error) {
-        console.log('Error: ', error);
         return null;
     }
 };
@@ -77,11 +68,8 @@ export const updateGame = async (gameId, updateData) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateData),
         });
-
-        console.log(res.ok ? "Game updated successfully" : "Failed to update game");
         return res.ok ? res.json() : null;
     } catch (error) {
-        console.log('Error: ', error);
         return null;
     }
 };
@@ -97,11 +85,8 @@ export const deleteGame = async (gameId) => {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         });
-
-        console.log(res.ok ? "Game deleted successfully" : "Failed to delete game");
         return res.ok;
     } catch (error) {
-        console.log('Error: ', error);
         return false;
     }
 };
@@ -117,11 +102,8 @@ export const getVideosByGameId = async (gameId) => {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
-
-        console.log(res.ok ? "Videos retrieved successfully" : "Failed to fetch videos");
         return res.ok ? res.json() : null;
     } catch (error) {
-        console.log('Error: ', error);
         return false;
     }
 };
@@ -132,11 +114,8 @@ export const getAllVideos = async () => {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
-
-        console.log(res.ok ? "Videos retrieved successfully" : "Failed to fetch videos");
         return res.ok ? res.json() : [];
     } catch (e) {
-        console.log("Error: ", e);
         return false;
     }
 }
@@ -155,11 +134,8 @@ export const createGameProgress = async (gameProgressData) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(gameProgressData),
         });
-
-        console.log(res.ok ? "GameProgress relationship created successfully" : "Failed to create GameProgress relationship");
         return res.ok ? res.json() : null;
     } catch (error) {
-        console.log('Error: ', error);
         return null;
     }
 };
@@ -175,11 +151,8 @@ export const getGameProgresssByGameId = async (gameId) => {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
-
-        console.log(res.ok ? "GameProgresss retrieved successfully" : "Failed to retrieve GameProgresss");
         return res.ok ? res.json() : [];
     } catch (error) {
-        console.log('Error: ', error);
         return [];
     }
 };
@@ -195,11 +168,8 @@ export const getGameProgressesByUserId = async (userId) => {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         });
-
-        console.log(res.ok ? "GameProgresss retrieved successfully" : "Failed to retrieve GameProgresss");
         return res.ok ? res.json() : [];
     } catch (error) {
-        console.log('Error: ', error);
         return [];
     }
 };
