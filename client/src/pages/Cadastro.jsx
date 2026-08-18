@@ -30,6 +30,7 @@ import { toastAlert } from "../components/ui/toastAlert.jsx";
 
 function Cadastro() {
     const navigate = useNavigate();
+    const [errors, setErrors] = useState({}); //prevencao de erros
 
     //nome de usuário
     const [username, setUsername] = useState('');
@@ -59,6 +60,42 @@ function Cadastro() {
     const [cidade, setCidade] = useState('');
     const [states, setStates] = useState({ items: [] });
     const [cities, setCities] = useState({ items: [] });
+
+    const validarDados = () => {
+        const nextErrors = {};
+
+        if (!username.trim()){
+            nextErrors.username = "Digite o nome de usuário";
+        }
+        if (!email.trim()){
+            nextErrors.email = "Digite seu e-mail";
+        }
+        if (!senha) {
+            nextErrors.senha = "Digite a senha";
+        }
+        if (!aniversario && !idade) {
+            nextErrors.aniversario = "Informe sua data de nascimento ou idade";
+        }
+        if (!anoEscolar || anoEscolar === "selecione") {
+            nextErrors.anoEscolar = "Selecione o ano escolar";
+        }
+        if (!tipoEscola || tipoEscola === "selecione" || tipoEscola === "") {
+            nextErrors.tipoEscola = "Selecione o tipo de escola";
+        }
+        if (!estado || estado === "selecione") {
+            nextErrors.estado = "Selecione o estado";
+        }
+        if (!cidade || cidade === "selecione") {
+            nextErrors.cidade = "Selecione a cidade";
+        }
+        if (!aceito) {
+            nextErrors.aceito = "Você precisa aceitar os termos";
+        }
+
+        setErrors(nextErrors);
+
+        return Object.keys(nextErrors).length === 0;
+    }
 
     useEffect(() => {
         if (aniversario) { // Verifica se a data de aniversário está definida para evitar loops infinitos
@@ -161,6 +198,9 @@ function Cadastro() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        const isValid = validarDados(); //prevencao de erros
+        if (!isValid) return; //retorna caso algo esteja fora do padrao
 
         const newUser = {
             nickname: username,
