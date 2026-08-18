@@ -23,14 +23,16 @@ import {
 import * as UserService from '../../middleware/UserService.js';
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar.jsx";
 import * as addressApi from '../getAddress.js';
 import { toastAlert } from "../components/ui/toastAlert.jsx";
+import { set } from "mongoose";
 
 function Cadastro() {
     const navigate = useNavigate();
-    const [errors, setErrors] = useState({}); //prevencao de erros
+    //prevencao de erros
+    const [errors, setErrors] = useState({});
 
     //nome de usuário
     const [username, setUsername] = useState('');
@@ -94,7 +96,7 @@ function Cadastro() {
 
         setErrors(nextErrors);
 
-        return Object.keys(nextErrors).length === 0;
+        return Object.keys(nextErrors).length === 0; //retorna se algum campo ta errado ou nao
     }
 
     useEffect(() => {
@@ -115,7 +117,11 @@ function Cadastro() {
     };
 
     const handleLinkClick = () => {
+        //ao mudar, zero ambos os valores
+        setIdade("");
+        setAniversario("");
         if (mostrarIdade) {
+            console.error("oioi")
             setMostrarIdade(false)
             setAniversarioInputVisivel(true);
         } else {
@@ -126,14 +132,23 @@ function Cadastro() {
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
+        if (errors.username) {
+            setErrors(prev => ({ ...prev, username: undefined }));
+        } //forca "undefined" pra remover o erro vermelho (undefined = false)
     };
 
     const handleIdadeChange = (e) => {
         setIdade(Number(e.target.value));
+        if (errors.aniversario){
+            setErrors(prev => ({ ...prev, aniversario: undefined}));
+        }
     };
 
     const handleAniversarioChange = (e) => {
         setAniversario(e.target.value);
+        if (errors.aniversario){
+            setErrors(prev => ({ ...prev, aniversario: undefined}));  
+        }
     };
 
     const handleGeneroChange = (e) => {
@@ -142,18 +157,30 @@ function Cadastro() {
 
     const handleAnoEscolarChange = (e) => {
         setAnoEscolar(e.target.value);
+        if (errors.anoEscolar){
+            setErrors(prev => ({ ...prev, anoEscolar: undefined}))
+        }
     };
 
     const handleSenhaChange = (e) => {
         setSenha(e.target.value);
+        if (errors.senha){
+            setErrors(prev => ({ ...prev, senha:undefined}))
+        }
     };
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
+        if (errors.email){
+            setErrors(prev => ({...prev, email:undefined}))
+        }
     };
 
     const handleTipoEscolaChange = (e) => {
         setTipoEscola(e.target.value);
+        if (errors.tipoEscola){
+            setErrors(prev => ({...prev, tipoEscola:undefined}))
+        }
     };
 
     const handleEstadoChange = async (e) => {
@@ -164,10 +191,16 @@ function Cadastro() {
         } catch (e) {
             console.error(e);
         }
+        if (errors.estado){
+            setErrors(prev => ({...prev, estado:undefined}))
+        }
     };
 
     const handleCidadeChange = (e) => {
         setCidade(e.target.value);
+        if (errors.cidade){
+            setErrors(prev => ({...prev, cidade:undefined}))
+        }
     };
 
     useEffect(() => {
@@ -247,17 +280,46 @@ function Cadastro() {
                             <Text fontSize='2xl' textAlign={"center"} mb={"12px"}>Registre-se para jogar!</Text>
                             <Heading as='h3' size='lg' color="#285A8F" pb={3}>Dados pessoais</Heading>
                             <VStack spacing="4">
-                                <Box w="700px">
+
+                                {/*USUARIO*/}
+                                <FormControl isInvalid={!!errors.username} w="700px" mb={2}>
                                     <FormLabel htmlFor="user">Nome de usuário</FormLabel>
-                                    <Input variant='filled' id="user" type="text" value={username} onChange={handleUsernameChange} />
-                                </Box>
+                                    <Input
+                                        variant='filled'
+                                        id="user"
+                                        type="text"
+                                        value={username}
+                                        onChange={handleUsernameChange}
+                                    />
+                                    {/*ERRO DE USUARIO*/}
+                                    {errors.username && (
+                                        <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.username}
+                                        </Text>
+                                    )}
+                                </FormControl>
 
-                                <Box w="100%" pb={2}>
+                                {/*EMAIL*/}
+                                <FormControl isInValid={!!errors.email} w="100%" pb={2}>
                                     <FormLabel htmlFor="email">Email</FormLabel>
-                                    <Input variant='filled' id="email" type="email" placeholder="exemplo@gmail.com" value={email} onChange={handleEmailChange} />
-                                </Box>
+                                    <Input 
+                                        variant='filled' 
+                                        id="email" 
+                                        type="email" 
+                                        placeholder="exemplo@gmail.com" 
+                                        value={email} 
+                                        onChange={handleEmailChange}
+                                    />
+                                    {/*ERRO DE EMAIL*/}
+                                    {errors.email && (
+                                        <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.email}
+                                        </Text>
+                                    )}
+                                </FormControl>
 
-                                <Box w="100%">
+                                {/*DATA DE NASCIMENTO*/}
+                                <FormControl isInValid={!!errors.aniversario} w="100%" pb={2}>
                                     <HStack>
                                         <FormLabel htmlFor="nasc">Data de nascimento</FormLabel>
                                         <Link color='#3D8ADB' fontSize='medium' pb={2} onClick={handleLinkClick} textDecoration="underline">Não sabe sua data de nascimento?</Link>
@@ -281,7 +343,12 @@ function Cadastro() {
                                             <option value="12">12 anos</option>
                                         </Select>
                                     )}
-                                </Box>
+                                    {(errors.aniversario) && (
+                                        <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.aniversario}
+                                        </Text>
+                                    )}
+                                </FormControl>
 
                                 <Box w="100%">
                                     <FormLabel pt={2}>Gênero</FormLabel>
@@ -298,8 +365,9 @@ function Cadastro() {
                                         </HStack>
                                     </RadioGroup>
                                 </Box>
-
-                                <Box w="100%">
+                                
+                                {/*ANO ESCOLAR*/}
+                                <FormControl isInvalid={!!errors.anoEscolar} w="100%" pb={2}>
                                     <FormLabel htmlFor="anoesc">Ano escolar</FormLabel>
                                     <Select id="anoesc" value={anoEscolar} variant='filled' onChange={handleAnoEscolarChange}>
                                         <option value="selecione"></option>
@@ -311,46 +379,97 @@ function Cadastro() {
                                         <option value="6°ano">6° Ano</option>
                                         <option value="7°ano">7° Ano</option>
                                     </Select>
-                                </Box>
+                                    {/*ERRO DE ANO ESCOLAR*/}
+                                    {errors.anoEscolar && (
+                                        <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.anoEscolar}
+                                        </Text>
+                                    )}
+                                </FormControl>
 
+                                {/*SENHA*/}
                                 <FormControl id="senha-fc" mb={4}>
                                     <FormLabel htmlFor="senha">Senha</FormLabel>
                                     <InputGroup size='md'>
-                                        <Input id="senha" pr='4.5rem' variant='filled' type={showSenha ? 'text' : 'password'} value={senha} onChange={handleSenhaChange} />
+                                        <Input 
+                                            id="senha" 
+                                            pr='4.5rem' 
+                                            variant='filled' 
+                                            type={showSenha ? 'text' : 'password'} 
+                                            value={senha} 
+                                            onChange={handleSenhaChange} />
+                                        {/*ESCONDER/MOSTRAR SENHA*/}
                                         <InputRightElement width='6rem'>
                                             <Button h='1.6rem' size='sm' bg={"blackAlpha.300"} onClick={handleClick}>
                                                 {showSenha ? 'Esconder' : 'Mostrar'}
                                             </Button>
                                         </InputRightElement>
                                     </InputGroup>
+                                    {/*ERRO DE SENHA*/}
+                                    {errors.senha && (
+                                        <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.senha}
+                                        </Text>
+                                    )}
                                 </FormControl>
                             </VStack>
 
                             {/* Segunda parte da página */}
                             <Heading as='h3' size='lg' color="#285A8F" pb={3}> Dados da escola</Heading>
                             <VStack>
-                                <Box w="100%">
+                                {/*TIPO DE ESCOLA*/}
+                                <FormControl isInvalid={!!errors.tipoEscola} w="100%" pb={2}>
                                     <FormLabel htmlFor="tpesc">Tipo de escola</FormLabel>
                                     <Select value={tipoEscola} variant='filled' id="tpesc" onChange={handleTipoEscolaChange}>
                                         <option value="selecione"></option>
                                         <option value="particular">Particular</option>
                                         <option value="pública">Pública</option>
                                     </Select>
-                                </Box>
+                                    {/*ERRO DO TIPO DE ESCOLA*/}
+                                    {errors.tipoEscola && (
+                                            <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.tipoEscola}
+                                        </Text>
+                                    )}
+                                </FormControl>
                             </VStack>
-                            <HStack spacing="4" pb={3}>
-                                <Box w="100%">
+
+                            <HStack spacing="4" pb={3} align="flex-start">
+                                {/*ESTADO*/}
+                                <FormControl isInvalid={!!errors.estado} w="100%" pb={2}>
                                     <FormLabel htmlFor="estado">Estado</FormLabel>
-                                    <Select id="estado" variant='filled' value={estado} onChange={handleEstadoChange}>
+                                    <Select 
+                                        id="estado" 
+                                        variant='filled' 
+                                        value={estado} 
+                                        onChange={handleEstadoChange}>
                                         {statesOptions}
                                     </Select>
-                                </Box>
-                                <Box w="100%">
+                                    {/*ERRO DE ESTADO*/}
+                                    {errors.estado && (
+                                        <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.estado}
+                                        </Text>
+                                    )}
+                                </FormControl>
+
+                                {/*CIDADE*/}
+                                <FormControl isInvalid={!!errors.cidade} w="100%" pb={2}>
                                     <FormLabel htmlFor="cidade">Cidade</FormLabel>
-                                    <Select id="cidade" variant='filled' value={cidade} onChange={handleCidadeChange}>
+                                    <Select 
+                                        id="cidade" 
+                                        variant='filled' 
+                                        value={cidade} 
+                                        onChange={handleCidadeChange}>
                                         {citiesOptions}
                                     </Select>
-                                </Box>
+                                    {/*ERRO DE CIDADE*/}
+                                    {(!errors.estado && errors.cidade) && (
+                                        <Text color="red" fontSize="sm" mt={1}>
+                                            {errors.cidade}
+                                        </Text>
+                                    )}
+                                </FormControl>
                             </HStack>
                             <HStack spacing="4" align="center" >
                                 <Checkbox id="aceito" colorScheme='blue' required />
