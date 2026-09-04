@@ -211,8 +211,8 @@ function Game({ userData, gameId, pasteSelected, brushSelected, setHasSelectedBo
 
   return (
     <Center>
-      <Center className="brush-cursor body" flexDirection="column" padding="12px 24px" width="700px" borderRadius="10px">
-        <HStack spacing="24px" className="menu" justifyContent="space-around">
+      <Center className="brush-cursor body" flexDirection="column" padding={{ base: 3, md: 6 }} width="100%" maxW="700px" borderRadius="10px">
+        <HStack spacing={{ base: 2, md: 6 }} wrap="wrap" className="menu" justifyContent="space-around" width="100%">
           <div className="menu-level">
             <img src="../../images/star.png" alt="nivel" style={{ height: "28px", marginRight: "5px" }} />
             Nível: <span>{level}</span>
@@ -229,7 +229,7 @@ function Game({ userData, gameId, pasteSelected, brushSelected, setHasSelectedBo
             <img src="../../images/love-always-wins.png" alt="vidas" style={{ height: "28px", marginRight: "4px" }} />
             Vidas: <span id="number-lives-left">{lives}</span></div>
         </HStack>
-        <Text id="instructions" maxW={"600px"} textAlign={"center"} fontSize={21} mt={2}>{message}</Text>
+        <Text id="instructions" width="100%" maxW="600px" textAlign="center" fontSize={{ base: "md", md: "21px" }} mt={2}>{message}</Text>
         <HStack gap={0} wrap={"wrap"} maxWidth={"390px"} mb={2} mt={4} bgColor={"#FD8087"} borderRadius={"10px"}>
           {[...Array(9)].map((_, index) => (
             <div

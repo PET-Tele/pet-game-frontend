@@ -16,7 +16,7 @@ function Terms() {
     
     return (
         <Center mt={12} overflow={"none"}>
-            <Container maxWidth={"900px"} maxHeight={"calc(100vh - 180px)"} p={"32px 32px 32px 32px"} bg="#f0f0f0" borderRadius={20} boxShadow="md" overflowY={"auto"}>
+            <Container width="100%" maxW="900px" maxH="calc(100vh - 180px)" p={{ base: 4, md: 8 }} bg="#f0f0f0" borderRadius={20} boxShadow="md" overflowY="auto">
                 <Heading mb={6} size="lg" width={"100%"} textAlign={"center"}>{terms.title || 'Terms and Conditions'}</Heading>
                 {terms.paragraphs && terms.paragraphs.map((term, index) => (
                     <Box key={term.substring(0, 50) + index} mb={3}>

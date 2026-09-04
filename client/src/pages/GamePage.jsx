@@ -9,7 +9,7 @@ const GamePage = (props) => {
   const { id } = useParams();
 
   return (
-    <div style={{overflow: 'hidden'}}>
+    <div style={{overflowX: 'hidden'}}>
       { id === "67ad0635dc308dc17c534834" ? <Trivia gameId={id} userData={props.userData}/> : console.log(id) }
       { id === "67bdd42d267c2211b1857ed0" ? <Whack gameId={id} userData={props.userData}/> : console.log(id) }
     </div>

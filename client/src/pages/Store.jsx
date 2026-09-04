@@ -337,7 +337,8 @@ const Store = (props) => {
 
     return (
         <Container
-            minW={"900px"}
+            width="100%"
+            maxW="900px"
             mt="12"
             borderRadius={20}
             boxShadow="0 1px 2px #ccc"
@@ -347,7 +348,7 @@ const Store = (props) => {
             justify="center"
             overflowY={"none"}
         >
-            <HStack justifyContent="space-between" width={"700px"}>
+            <HStack justifyContent="space-between" width="100%" maxW="700px" wrap="wrap" gap={4}>
                 <Heading>Loja</Heading>
                 <Badge variant={'solid'} style={{ padding: "4px", backgroundColor: "#efbf04", display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <i className="fa fa-coins"></i>
@@ -355,7 +356,7 @@ const Store = (props) => {
                 </Badge>
             </HStack>
             <VStack mt="12" gap="40px" overflowY={"auto"} height={"300px"}>
-                <HStack gap={"40px"} wrap={"wrap"} width={"52vw"}>
+                <HStack gap={{ base: 4, md: 10 }} wrap="wrap" width="100%" justifyContent="center">
                     {Array.isArray(itemsList) && itemsList.map((item) => {
                         if (props.userData.isAdmin) {
                             return (

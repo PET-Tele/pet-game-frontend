@@ -81,28 +81,26 @@ function Login() {
     return (
      
         <Flex
+            minH="calc(100vh - 100px)"
+            width="100%"
             align="center"
             justify="center"
             bg="#012034"
-            h="86.3vh"
 
         >
             <Center
-            w="900px"
-            h="420px"
-            maxW={840}
+            width="100%"
+            maxW={{ base: "100%", md: "840px" }}
+            minH={{ base: "420px", md: "420px" }}
+            padding={{base: 4, md: 6}}
             bg="white"
-            top={250}
-            position="absolute"
-            borderRadius={20}
-            p="6"
             boxShadow="0 1px 2px #ccc"
             >
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} style={{ width: "100%" }}>
                 <FormControl display="flex" flexDir="column" gap="4">
                 <Text fontSize='2xl' textAlign={"center"}>Bem-vindo(a)!</Text>
                     <VStack spacing="4">
-                        <Box w="650px">
+                        <Box width="100%" maxW="650px">
                             <FormLabel htmlFor="user">Nome de usuário ou email</FormLabel>
                             <Input id="user" variant='filled' value={username} onChange={handleUsernameChange}/>
                         </Box>
@@ -139,7 +137,7 @@ function Login() {
 
                     </HStack>
                 </FormControl>
-                <Center w="650px" flex={true} marginTop={"24px"} justifyContent={"center"}>
+                <Center width="100%" maxW="650px" flex={true} marginTop={"24px"} justifyContent={"center"}>
                         <p>Não tem uma conta?</p>
                         <Button
                             // w={240}

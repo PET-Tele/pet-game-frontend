@@ -25,10 +25,10 @@ function Whack (props) {
     return (
         <Center>
             {!(hasSelectedBoth) && 
-                <Container  mt={12} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"} className="body" borderRadius={"10px"} padding={"12px 24px 24px 12px"} width={"700px"} height={'fit-content'}>
+                <Container mt={12} display="flex" flexDirection="column" alignItems="center" justifyContent="center" className="body" borderRadius="10px" padding={{ base: 3, md: 6 }} width="100%" maxW="700px" height="fit-content">
                     <Heading size={"lg"} fontFamily={"Pixelify Sans"} mb={4}>Vamos nos preparar!</Heading>
                     <h1>Selecione uma escova</h1>
-                    <HStack gap={"40px"} alignItems={"center"} justifyContent={"center"} mb={4} mt={2}>
+                    <HStack gap={{ base: 3, md: 10 }} wrap="wrap" alignItems="center" justifyContent="center" mb={4} mt={2}>
                         {brushSelected !== 1 ? 
                             <div style={{height: '120px', width: '120px'}} className="temp-rect" onClick={() => setBrushSelected(1)}>
                                 <picture><img src={"../../images/escovinha.png"} alt="" /></picture>
@@ -61,7 +61,7 @@ function Whack (props) {
                         }
                     </HStack>
                     <h1>Selecione uma pasta</h1>
-                    <HStack gap={"40px"} alignItems={"center"} justifyContent={"center"}  mt={2}>
+                    <HStack gap={{ base: 3, md: 10 }} wrap="wrap" alignItems="center" justifyContent="center" mt={2}>
                         {pasteSelected !== 0 ? 
                             <div style={{height: '120px', width: '120px'}} className="temp-rect" onClick={() => setPasteSelected(0)}>
                                 <picture><img src={"../../images/004-toothpaste.png"} alt="" /></picture>

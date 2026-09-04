@@ -111,7 +111,8 @@ function Principal(props) {
     return (
         <Center align="center" justify="center" bg="#012034" h="86.3vh">
             <Flex
-                w="900px"
+                width="100%"
+                maxW="900px"
                 h={"fit-content"}
                 padding={"40px 0px 40px 0"}
                 bg="white"
@@ -127,7 +128,8 @@ function Principal(props) {
                     <Flex
                         className="link"
                         style={{
-                            width: "600px",
+                            width: "100%",
+                            maxWidth: "600px",
                             justifyContent: "space-between",
                             flexWrap: "wrap",
                             gap: "14px",

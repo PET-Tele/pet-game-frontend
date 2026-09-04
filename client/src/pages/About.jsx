@@ -6,7 +6,7 @@ const About = (props) => {
   const navigate = useNavigate();
   return (
     <Center mt={12} overflow={"none"}>
-      <Container minWidth={"1000px"} maxHeight={"calc(100vh - 180px)"} bg="#f0f0f0" p={"32px 32px 32px 32px"} borderRadius={8} boxShadow="md" overflowY={"auto"}>
+      <Container width="100%" maxW="1000px" maxH="calc(100vh - 180px)" bg="#f0f0f0" p={{ base: 4, md: 8 }} borderRadius={8} boxShadow="md" overflowY="auto">
         <Heading mb={2}>Sobre a página</Heading>
         <Text>Olá, amiguinhos e amiguinhas!</Text>
         <Text>Estamos muito felizes em ter você aqui no nosso site especial, criado com muito carinho pelo PET Odontologia e PET Telecomunicações. Aqui, você vai se divertir e aprender ao mesmo tempo com jogos super legais que ensinam tudo sobre saúde bucal!</Text>
@@ -33,7 +33,7 @@ const About = (props) => {
 
 
         {/* <Text size="md" mt={8} mb={2}>Desenvolvido com muito carinho pelos grupos PET Odontologia e Telecomunicações.</Text> */}
-        <HStack align={'center'} mt={12} gap={4} justifyContent={'center'}>
+        <HStack align="center" mt={12} gap={4} justifyContent="center" wrap="wrap">
           <Image src="../../images/pet-odonto-logo.png" alt="PET Odontologia Logo" height={"80px"}/>
           {/* <Circle size="6px" bg="#000000a7" /> */}
           <Image src="../../images/pet-tele-logo.png" alt="PET Telecomunicações Logo" height={"60px"}/>

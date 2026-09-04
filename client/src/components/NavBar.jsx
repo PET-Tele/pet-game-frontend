@@ -140,24 +140,34 @@ function NavBar() {
         <div>
             <Flex
                 as="header"
-                h={100}
+                minH={{ base: "auto", md: "100px" }}
+                width="100%"
                 bg="#012034"
                 color="white"
                 fontWeight="bold"
-                fontSize="4xl"
-                justifyContent={'space-between'}
-                alignItems={'end'}
-                padding={"0 24px 12px 24px"}
+                justifyContent="space-between"
+                alignItems={{ base: "center", md: "flex-end" }}
+                direction={{ base: "column", md: "row" }}
+                gap={{ base: 3, md: 6 }}
+                paddingX={{ base: 3, md: 6 }}
+                paddingY={{ base: 3, md: 4 }}
             >
                 <Image
-                    height={"60px"}
+                    height={{ base: "48px", md: "60px" }}
+                    maxW="100%"
                     objectfit='contain'
                     src='../../logo_petgame.PNG'
                     alt='Pet game'
                     onClick={() => navigate("/")}
                     _hover={{ cursor: 'pointer' }}
                 />
-                <Flex justifyContent={'space-between'} alignItems={'end'} gap={"24px"}>
+                <Flex
+                    width="100%"
+                    wrap="wrap"
+                    justifyContent={{ base: "center", md: "flex-end" }}
+                    alignItems="center"
+                    gap={{ base: 2, md: 6 }}
+                >
                     {getButtonConfig().map(buttonConfig => renderButton(buttonConfig))}
                     {isLogged && (
                         <>

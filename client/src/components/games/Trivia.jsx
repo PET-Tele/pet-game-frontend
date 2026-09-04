@@ -126,7 +126,7 @@ const Trivia = (props) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <div style={{backgroundImage: 'url("/bg-temp.png")', backgroundSize: 'cover', height: 'calc(100vh - 100px)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{backgroundImage: 'url("/bg-temp.png")', backgroundSize: 'cover', minHeight: 'calc(100vh - 100px)', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '16px'}}>
             <div /*style={styles.container}*/ className='pixel2white' >
                 <h1 style={styles.title}>Me diz aí!</h1>
                 {currentQuestionIndex < triviaData.length ? (
@@ -183,7 +183,8 @@ const styles = {
         padding: '32px 32px 0px 32px',
         border: '1px solid #ccc',
         borderRadius: '10px',
-        width: '500px',
+        width: '100%',
+        maxWidth: '500px',
         margin: '20px auto 10px auto',
     },
     levelBox: {
@@ -203,7 +204,8 @@ const styles = {
         padding: '12px 32px',
         // border: '1px solid #ccc',
         borderRadius: '10px',
-        minWidth: '700px',
+        width: '100%',
+        maxWidth: '700px',
         // margin: '20px auto',
         backgroundColor: 'rgba(255, 255, 255, 0.5)',
     },

@@ -268,10 +268,11 @@ function Cadastro() {
                 pb={"24px"}
             >
                 <Center
-                    w="900px"
+                    width="100%"
+                    maxW="900px"
                     bg="white"
                     borderRadius={20}
-                    padding={"40px 0px"}
+                    padding={{ base: 4, md: "40px" }}
                     boxShadow="0 1px 2px #ccc"
                 >
                     <form onSubmit={onSubmit}>
@@ -281,7 +282,7 @@ function Cadastro() {
                             <VStack spacing="4">
 
                                 {/*USUARIO*/}
-                                <FormControl isInvalid={!!errors.username} w="700px" mb={2}>
+                                <FormControl isInvalid={!!errors.username} width="100%" maxW="700px" mb={2}>
                                     <FormLabel htmlFor="user">Nome de usuário</FormLabel>
                                     <Input
                                         variant='filled'

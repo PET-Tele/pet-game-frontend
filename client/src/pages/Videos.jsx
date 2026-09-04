@@ -26,11 +26,11 @@ const Videos = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Container  mt={12} maxW={'auto'} width={"800px"} bg="#f0f0f0" p={12} borderRadius={8} boxShadow="md">
+    <Container mt={12} width="100%" maxW="800px" bg="#f0f0f0" p={{ base: 4, md: 12 }} borderRadius={8} boxShadow="md">
         <Heading>Vídeos</Heading>
         <Text>Assista aos vídeos para aprender mais sobre os seus dentes e como mantê-los saudáveis!</Text>
 
-        <HStack mt={12} gap={"40px"}>
+        <HStack mt={12} gap={{ base: 4, md: 10 }} wrap="wrap" justifyContent="center">
           {videos && videos.map((game, index) => (
             game.videos.length > 0 && game.videos.map((video, videoIndex) => (
               <Box key={`${index}-${videoIndex}`} w={"120px"} h={"120px"} bg={"#e0e0e0"} borderRadius={"12"} _hover={{cursor: 'pointer'}} onClick={() => {popVideo(video, game.gameName); onOpen()}}>

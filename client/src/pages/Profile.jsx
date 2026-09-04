@@ -42,7 +42,8 @@ function Profile(props) {
 
     return (
         <Container
-            minW={"900px"}
+            width="100%"
+            maxW="900px"
             mt="12"
             borderRadius={20}
             boxShadow="0 1px 2px #ccc"
@@ -58,7 +59,7 @@ function Profile(props) {
 
             <VStack align={"start"} mt="8">
                 <Heading size={"md"}>Inventário</Heading>
-                <HStack>
+                <HStack wrap="wrap">
                     {Array.isArray(inventoryItems) &&
                         inventoryItems.map((item) => (
                             <div key={item._id} className="store-rect">

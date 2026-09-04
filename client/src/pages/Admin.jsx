@@ -70,7 +70,7 @@ const Admin = (props) => {
     }
 
     return (
-        <Container mt={12} maxW={'auto'} width={"1280px"} bg="#f0f0f0" p={12} mb={0} borderRadius={8} boxShadow="md" >
+        <Container mt={12} width="100%" maxW="1280px" bg="#f0f0f0" p={{ base: 4, md: 12 }} mb={0} borderRadius={8} boxShadow="md" >
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
@@ -92,7 +92,7 @@ const Admin = (props) => {
                 </HStack>
             ) : (
                 users.length > 0 ? (
-                    <TableContainer overflowY={"auto"} maxH={"400px"}>
+                    <TableContainer overflowX="auto" overflowY="auto" maxH="400px">
                         <Table variant="simple">
                             <Thead>
                                 <Tr>
