@@ -27,7 +27,6 @@ import { Form, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar.jsx";
 import * as addressApi from '../getAddress.js';
 import { toastAlert } from "../components/ui/toastAlert.jsx";
-import { set } from "mongoose";
 
 function Cadastro() {
     const navigate = useNavigate();
