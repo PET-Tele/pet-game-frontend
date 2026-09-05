@@ -113,7 +113,20 @@ function Login() {
     
 
                             <FormControl id="senha-control">
+                                <Flex
+                                    justify="left">
                                 <FormLabel htmlFor="senha">Senha</FormLabel>
+                                    <Button 
+                                        size="sm"
+                                        type="submit"
+                                        h="1.6rem"
+                                        color="blue"
+                                        bg="white"
+                                        onClick={() => navigate("/esqueci-senha")}
+                                    >
+                                        Esqueci minha senha
+                                    </Button>
+                                </Flex>
 
                                 <InputGroup size='md'>
                                     <Input 
@@ -147,7 +160,7 @@ function Login() {
                         >
                             Mantenha-me conectado
                         </Checkbox>
-                        </Box>
+                    </Box>
                     
                     <HStack justify="center">
                     <Button
