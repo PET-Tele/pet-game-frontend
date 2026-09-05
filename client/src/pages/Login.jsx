@@ -99,26 +99,55 @@ function Login() {
             <form onSubmit={onSubmit} style={{ width: "100%" }}>
                 <FormControl display="flex" flexDir="column" gap="4">
                 <Text fontSize='2xl' textAlign={"center"}>Bem-vindo(a)!</Text>
-                    <VStack spacing="4">
-                        <Box width="100%" maxW="650px">
-                            <FormLabel htmlFor="user">Nome de usuário ou email</FormLabel>
-                            <Input id="user" variant='filled' value={username} onChange={handleUsernameChange}/>
-                        </Box>
+                    <Box width="100%" maxW="650px" alignSelf="center">
+                        <VStack spacing="4" align="stretch">
+                            <FormControl id="user-control">
+                                <FormLabel htmlFor="user">Nome de usuário ou email</FormLabel>
+                                <Input
+                                    id="user"
+                                    variant='filled'
+                                    value={username}
+                                    onChange={handleUsernameChange}
+                                />
+                            </FormControl>
+    
 
-                        <FormControl id="senha" mb={4}>
-                        <FormLabel htmlFor="senha">Senha</FormLabel>
-                        <InputGroup size='md'>
-                            <Input id="senha" pr='4.5rem' variant='filled' type={showSenha ? 'text' : 'password'} value={senha} onChange={handleSenhaChange}/>
-                            <InputRightElement width='6rem'>
-                                <Button h='1.6rem' size='sm' bg={"blackAlpha.300"} onClick={handleClick}>
-                                    {showSenha ? 'Esconder' : 'Mostrar'}
-                                </Button>
-                            </InputRightElement>
-                        </InputGroup>
-                        </FormControl>
-                        
-                    </VStack>
-                    <Checkbox size='lg' isChecked={mantenhaConectado} onChange={handleCheckboxChange} mt={-6}>Mantenha-me conectado</Checkbox>
+                            <FormControl id="senha-control">
+                                <FormLabel htmlFor="senha">Senha</FormLabel>
+
+                                <InputGroup size='md'>
+                                    <Input 
+                                        id="senha"
+                                        pr='4.5rem'
+                                        variant='filled'
+                                        type={showSenha ? 'text' : 'password'}
+                                        value={senha}
+                                        onChange={handleSenhaChange}
+                                    />
+
+                                    <InputRightElement width='6rem'>
+                                        <Button
+                                            type="button"
+                                            h='1.6rem'
+                                            size='sm'
+                                            bg={"blackAlpha.300"}
+                                            onClick={handleClick}
+                                        >
+                                            {showSenha ? 'Esconder' : 'Mostrar'}
+                                        </Button>
+                                    </InputRightElement>
+                                </InputGroup>
+                            </FormControl>
+                        </VStack>
+
+                        <Checkbox
+                            size='lg'
+                            isChecked={mantenhaConectado}
+                            onChange={handleCheckboxChange}
+                        >
+                            Mantenha-me conectado
+                        </Checkbox>
+                        </Box>
                     
                     <HStack justify="center">
                     <Button
@@ -140,10 +169,6 @@ function Login() {
                 <Center width="100%" maxW="650px" flex={true} marginTop={"24px"} justifyContent={"center"}>
                         <p>Não tem uma conta?</p>
                         <Button
-                            // w={240}
-                            // p="6"
-                            // type="submit"
-                            // bg="#004AAD"
                             bg="none"
                             color="#004AAD"
                             fontWeight="bold"
