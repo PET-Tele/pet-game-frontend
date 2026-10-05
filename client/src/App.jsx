@@ -13,6 +13,8 @@ import Admin from './pages/Admin.jsx';
 import Profile from './pages/Profile.jsx';
 import Terms from './pages/Terms.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import ForgotPassword from './pages/ForgotPassword.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/esqueci-senha" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/about" element={<About />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/termos" element={<Terms />} />

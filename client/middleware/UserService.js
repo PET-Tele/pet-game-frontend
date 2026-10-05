@@ -168,24 +168,25 @@ export const getUserInventory = async (userId) => {
     }
 }
 
-// // @ts-ignore
-// export const fetchCookieData = async () => {
-//     try {
-//         const response = await fetch(`${backAPIUrl}/cookie-porra`);
-        
-//         // Verifica se o retorno é realmente JSON
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }
+export const requestPassword = async (token, password) => {
+    //requisicao HTTP
+    const response = await fetch(`${backAPIUrl}/reset-password`, {
+        method: "POST",
+        headers: {"Content-Type": "apllication/json",},
+        body: JSON.stringify({
+            token: token,
+            password: password,
+        }),
+    })
 
-//         const data = (await response.json());
-//         console.log(data.nickname);
-//         // setMessage(data.message);
+    let data = null;
+    try {
+        data = await response.json(); //ler o body e converter para objeto JS
+    } catch {} //apenas para nao quebrar a aplicacao
 
-//         // if (data.message === 'Não autenticado') {
-//         //     navigate("/login");
-//         // }
-//     } catch (error) {
-//         console.error("Erro ao buscar cookie:", error);
-//     }
-// };
+    return {
+        ok: response.ok,
+        status: response.status,
+        data,
+    };
+};
