@@ -118,7 +118,7 @@ function Login() {
                                 <FormLabel htmlFor="senha">Senha</FormLabel>
                                     <Button 
                                         size="sm"
-                                        type="submit"
+                                        type="button"
                                         h="1.6rem"
                                         color="blue"
                                         bg="white"

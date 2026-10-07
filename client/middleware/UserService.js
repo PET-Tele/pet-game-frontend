@@ -7,6 +7,48 @@ if (process.env.BACK_API_URL)
 else
     backAPIUrl = import.meta.env.VITE_BACK_API_URL+"/users";
 
+export const requestPasswordReset = async (email) => {
+    const response = await fetch(`${backAPIUrl}/forgot-password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+    });
+
+    let data = null;
+    try {
+        data = await response.json();
+    } catch {
+        data = null;
+    }
+
+    return {
+        ok: response.ok,
+        status: response.status,
+        data,
+    };
+};
+
+export const resetPassword = async (token, password) => {
+    const response = await fetch(`${backAPIUrl}/reset-password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, password }),
+    });
+
+    let data = null;
+    try {
+        data = await response.json();
+    } catch {
+        data = null;
+    }
+
+    return {
+        ok: response.ok,
+        status: response.status,
+        data,
+    };
+};
+
 /***
  * @desc    Faz uma requisição POST ao endereço /register, enviando os dados do usuário novo 
  */
@@ -97,6 +139,10 @@ export const fetchCookieData = async () => {
             credentials: 'include',
             headers: { 'Content-Type': 'application/json', },
         });
+
+        if (response.status === 401) {
+            return null;
+        }
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
