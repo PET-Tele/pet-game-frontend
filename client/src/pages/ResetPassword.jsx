@@ -77,7 +77,7 @@ function ResetPassword() {
                 );
 
                 setTimeout(() => {
-                    navigate("/login", { replace: true });
+                    navigate("/login", { replace: true }); //replace substitui a rota atual no historico de navegacao (nao da pra voltar para pag anterior)
                 }, 1500);
 
                 return;
