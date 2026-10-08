@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Uma plataforma de jogos educativos odontológicos para crianças usando JavaScript, React.js, Node.js e Phaser.js.",
   "main": "index.js",
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "@fastify/cookie": "^9.3.1",
     "@fastify/cors": "^9.0.1",
